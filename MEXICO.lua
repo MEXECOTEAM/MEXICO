@@ -1,7 +1,7 @@
 --[[
---=> تمت برمجة السورس وتطويره
---==>> بواسطة @TAHAJ20 <<==
--- للمزيد من المعلومات قناتنا @STORMCLI
+--=> تمت كتابه السورس بواسطه
+--==>>    بواسطه المطور @VI_P2 <<==
+-- للمزيد من المعلومات تابع 🌐┊MEXECOTEAM┇@MEXIC_TV
 --]]
 redis = require('redis') json = dofile('./JSON.lua')  URL = require('socket.url')  HTTPS = require ("ssl.https")  https = require ("ssl.https") http  = require ("socket.http") serpent = require("serpent")
 tahadevstorm = redis.connect('127.0.0.1', 6379)
@@ -26,10 +26,10 @@ file = io.open("STORM.sh", "w")
 file:write([[
 token="]]..token..[["
 curl "https://api.telegram.org/bot"$token"/sendmessage" -F
-./tg -s ./STORM.lua $@ --bot=$token
+./tg -s ./MEXICO.lua $@ --bot=$token
 ]])
 file:close()
-os.execute('screen -S -X  ./STORM.sh')
+os.execute('screen -S -X  ./MEXICO.sh')
 print("\27[735m"..[[ • ࿇ • { تم صنع ملف الرن الخاص في البوت } • ࿇ •     ]].."\n\27[10m")
 print("\27[735m"..[[]].."\n\27[10m")
 print("\27[738m"..[[]].."\n\27[10m")
@@ -238,7 +238,7 @@ local text = [[
 📬┊الايدي • <b>{ ]]..msg.sender_user_id_..[[ }</b>
 🚷┊قام باضافه بوت <b>{</b>API<b>}</b>
 <b> ================== </b>
-❯❯❯ معلومات البوت ❮❮❮
+🔽┇ معلومات البوت ┇🔽
  💠┊معرف البوت <b>{</b> @]]..msg.content_.members_[0].username_..[[ <b>}</b>
 📇┊اسم البوت <b>{</b> ]]..msg.content_.members_[0].first_name_..[[ <b>}</b>
 🎳┊ايدي البوت <b>{ ]]..msg.content_.members_[0].id_..[[ }</b>
@@ -485,7 +485,7 @@ if text and text:match('^الغاء العام (%d+)') and is_devtaha(msg) then 
 if text and text:match('^الغاء العام @(.*)') and is_devtaha(msg) then local username = text:match('الغاء العام @(.*)') function unbanusername(extra,result,success) if result.id_ then tahadevstorm:srem('storm:gbaned'..msg.chat_id_,result.id_)  zo = '🚸 ❯ العضو <b>{</b> @'..username..' <b>}</b>\n📮 ❯ الايدي <b>{ '..result.id_..' }</b>\n🚀 ❯ تم الغاء حظره عام\n'  else zo = '❌ يوجد خطا في الاتصال '   end  storm_sendMsg(msg.chat_id_, msg.id_, 1, zo, 1, 'html')  end saddbyusername(username,unbanusername) end
 if text == 'المحظورين عام' or text == 'قائمه العام' and is_sudo(msg) then local list = tahadevstorm:smembers('storm:gbaned') local t = '💥 • قائمه المحظورين عام • 💥\nٴ—⚜———༺🚸༻———⚜—  \n' for k, v in pairs(list) do if storm_get_user1 then t = t .. k .. "<b>~➣{</b> " ..storm_get_user1(v).."<b>}</b>\n"  else  t = t .. k .. " ~➣{" ..storm_get_user1(v).."<b>}</b>\n"  end  end if #list == 0 then t = '💥┊ لا يوجد اعضاء محظورين عام' end storm_sendMsg(msg.chat_id_, msg.id_, 1,t, 1, 'html') end
 if text == 'مسح العام' or text == 'مسح قائمه العام' and is_devtaha(msg) then tahadevstorm:del('storm:gbaned') storm_sendMsg(msg.chat_id_, msg.id_, 1,'💥┊ تم مسح قائمه المحظورين عام ', 1, 'html') end	 
-if text == 'تحديث' or text == 'تحديث ♻' and is_devtaha(msg) then  dofile('STORM.lua')  io.popen("rm -rf ~/.telegram-cli/data/audio/*") io.popen("rm -rf ~/.telegram-cli/data/document/*") io.popen("rm -rf ~/.telegram-cli/data/photo/*") io.popen("rm -rf ~/.telegram-cli/data/sticker/*") io.popen("rm -rf ~/.telegram-cli/data/temp/*") io.popen("rm -rf ~/.telegram-cli/data/thumb/*") io.popen("rm -rf ~/.telegram-cli/data/video/*") io.popen("rm -rf ~/.telegram-cli/data/voice/*") io.popen("rm -rf ~/.telegram-cli/data/profile_photo/*")
+if text == 'تحديث' or text == 'تحديث ♻' and is_devtaha(msg) then  dofile('MEXICO.lua')  io.popen("rm -rf ~/.telegram-cli/data/audio/*") io.popen("rm -rf ~/.telegram-cli/data/document/*") io.popen("rm -rf ~/.telegram-cli/data/photo/*") io.popen("rm -rf ~/.telegram-cli/data/sticker/*") io.popen("rm -rf ~/.telegram-cli/data/temp/*") io.popen("rm -rf ~/.telegram-cli/data/thumb/*") io.popen("rm -rf ~/.telegram-cli/data/video/*") io.popen("rm -rf ~/.telegram-cli/data/voice/*") io.popen("rm -rf ~/.telegram-cli/data/profile_photo/*")
 print("\27[734m"..[[]].."")
 print("\27[734m"..[[                  ♻ •>>  تم تحديث البوت   <<•♻          ]].."")
 print("\27[737m"..[[]].."")
@@ -565,9 +565,9 @@ local text = [[
 if text =='م1' then if not is_mod(msg) then storm_sendMsg(msg.chat_id_, msg.id_, 1, "🚸❯❯ عذرا هاذا الامر للادمنيه فقط\n", 1, "md")  else
 local text = [[ 
 💥 • اهلا بك عزيزي ]]..get_rtba(msg)..[[ • 💥
-📮❯❯ في اوامر الحمايه ❮❮📮
+📮┇ في اوامر الحمايه ┇📮
 
-ٴ—💠——༺❯🚸❮༻——💠— 
+ٴٴ—⚜——┈┉━📡━┉┄——⚜ 
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 🚀❯❯  قفل / فتح  الروابط
 🚀❯❯  قفل / فتح   التوجيه
@@ -657,13 +657,13 @@ local text = [[
 🎙❯ المحظورين :- لـعرض المحظورين 
 🎙❯ المكتومين :- لـعرض المكتومين
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-📮❯ للمزيد من المعلومات راسلنا ❮📮
-💠❯❯ مطور البوت {@]]..sudouser..[[}
+📮┇ للمزيد من المعلومات راسلنا ┇📮
+💠┇ مطور البوت {@]]..sudouser..[[}
  ]]  storm_sendMsg(msg.chat_id_, msg.id_, 1, text, 1, 'html')  end end 
 if text =='م4' then if not is_mod(msg)  then storm_sendMsg(msg.chat_id_, msg.id_, 1, "🚸❯❯ عذرا هاذا الامر للادمنيه فقط\n", 1, "md")  else
 local text = [[ 
 💥 • اهلا بك عزيزي ]]..get_rtba(msg)..[[ • 💥
-💠❯❯ في اوامــر المدراء  ❮❮💠
+💠┇ في اوامــر المدراء  ┇💠
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 🎮❯ رفع ادمن » لرفع ادمن 
 🎮❯ تنزيل ادمن » لتنزيل ادمن 
@@ -695,8 +695,8 @@ local text = [[
 ☑❯ تفعيل ردود الكروب لتفعيل ردود 
 ❌❯ تعطيل ردود الكروب لتعطيل الردود
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-📮❯ للمزيد من المعلومات راسلنا ❮📮
-💠❯❯ مطور البوت {@]]..sudouser..[[}
+📮┇ للمزيد من المعلومات راسلنا ┇📮
+💠┇ مطور البوت {@]]..sudouser..[[}
  ]]  storm_sendMsg(msg.chat_id_, msg.id_, 1, text, 1, 'html')  end end 
 if text =='م5' then if not is_mod(msg)  then storm_sendMsg(msg.chat_id_, msg.id_, 1, "🚸❯❯ عذرا هاذا الامر للادمنيه فقط\n", 1, "md")  else
 local text = [[ 
@@ -837,18 +837,18 @@ local text = [[
  ]]  storm_sendMsg(msg.chat_id_, msg.id_, 1, text, 1, 'html')  end end 
 if text == 'السورس' then
 local text = [[
-💥❯ اهلا بك في السورس ❮💥
+📮┇ اهلا بك في السورس ┇📮
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-🍃 ❯❯ انسخ الكود 👇 ثم افتح ترمنال وحط الرابط ثم انتر
+🗯 ┇ انسخ الكود 👇 ثم افتح ترمنال وخلي الكود ثم انتر
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-🚸 ❯❯ `git clone https://github.com/NOVAR1/STORM.git && cd STORM && chmod +x tg && chmod +x STORM.sh && ./STORM.sh`
+🔽 ┇ `git clone https://github.com/MEXECOTEAM/MEXICO.git && cd MEXICO && chmod +x tg && chmod +x MEXICO.sh && ./MEXICO.sh`
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-📬❯❯ لتشغيل البوت الصق الكود 👇 بالترمنال ثم انتر 
-`cd STORM && screen -S -X ./STORM.sh`
+📬┇ لتشغيل البوت الصق الكود 👇 وخلي بالترمنال ثم انتر 
+`cd MEXICO && screen -S -X ./MEXICO.sh`
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-🚸❯❯ للاستفسارت والاراء ❮❮🚸
-♨❯❯ المطور @TAHAJ20
-📯❯❯ قناتنا @STORMCLI
+☼┇ للاستفسارت والاراء ┇☼
+📡┇المطور @VI_P2
+🌐┊MEXECOTEAM┇@MEXIC_TV
 ]] storm_sendMsg(msg.chat_id_, msg.id_, 1,text, 1, 'md')   end
 if text == 'تعطيل' and is_sudo(msg) and add_in_ch(msg) then tahadevstorm:srem("addgrop", msg.chat_id_) tahadevstorm:del("addfrebot:"..msg.chat_id_, true) tahadevstorm:srem('bot:gpsby:id', msg.chat_id_)  tahadevstorm:srem("botgps", msg.chat_id_) function check_can_send(extra,result,success)  username = '@'..(result.username_ or 'ماكو معرف ❌')..''  local zo = '\n`┄•🚸•┄༻⚜༺┄•🚸•┄ `\n📬┊المجموعه *{ '..title_name(msg.chat_id_)..' }*\n📮 ❯❯ تم تعطيلها بنجاح ❮❮ 📮\n`┄┄┄┄┄┄┄┄┄┄┄┄┄┄`\n🚸┊بواسطه *{* ['..username..'] *}*\n`┄•🚸•┄༻⚜༺┄•🚸•┄ `'   storm_sendMsg(msg.chat_id_, msg.id_, 1,zo, 1, 'md')   if not is_devtaha(msg) then  if not tahadevstorm:get("data:bot:"..msg.chat_id_) then 
 local text = [[
@@ -864,8 +864,10 @@ local text = [[
 💢┊ايدي المطور <b>{ ]]..msg.sender_user_id_..[[ }</b>
 ✨┊معرف المطور <b>{</b> ]]..username..[[ <b>}</b>
 ]] storm_sendMsg(SUDO, 0, 1,text, 1, 'html')  tahadevstorm:setex("data:bot:"..msg.chat_id_, 100, true) end end  end getUser(msg.sender_user_id_,check_can_send) return rem_lockal(msg.chat_id_) end    
-if text == 'تفعيل' and is_sudo(msg) and add_in_ch(msg) then  function check_can_send(extra,result,success)  username = '@'..(result.username_ or 'ماكو معرف ❌')..''  if not msg.can_be_deleted_ == true then storm_sendMsg(msg.chat_id_, msg.id_, 1, "✖ ❯ انا لست ادمن في الكروب 🍃\n", 1, "md") else tahadevstorm:set("addfrebot:"..msg.chat_id_, true) tahadevstorm:sadd('bot:gpsby:id', msg.chat_id_)  tahadevstorm:sadd("botgps", msg.chat_id_) local function cb(extra,result,success) local moder = result.members_   for i = 0 , #moder do   if tahadevstorm:sismember('mods:'..msg.chat_id_,moder[i].user_id_) then   else tahadevstorm:sadd('mods:'..msg.chat_id_,moder[i].user_id_) end  end end    chek_moder(msg.chat_id_,cb)   function gpinfo(arg,data)   local function cb(extra,result,success)  local moder = result.members_    for i = data.administrator_count_ - 1 , #moder do   if tahadevstorm:sismember('moder'..msg.chat_id_,moder[i].user_id_) then  else tahadevstorm:sadd('moder'..msg.chat_id_,moder[i].user_id_) end   end end  chek_moder(msg.chat_id_,cb) end getChannelFull(msg.chat_id_, gpinfo, nil)  tahadevstorm:sadd("addgrop", msg.chat_id_) 
-local zo = '\n`┄•🚸•┄༻⚜༺┄•🚸•┄ `\n📬┊المجموعه *{ '..title_name(msg.chat_id_)..' }*\n📮 ❯❯ تم تفعيلها بنجاح ❮❮ 📮\n`┄┄┄┄┄┄┄┄┄┄┄┄┄┄`\n🚸┊بواسطه *{* ['..username..'] *}*\n`┄•🚸•┄༻⚜༺┄•🚸•┄ `'  storm_sendMsg(msg.chat_id_, msg.id_, 1,zo, 1, 'md')    end if not is_devtaha(msg) then    if not tahadevstorm:get("data:bot:"..msg.chat_id_) then function gpinfo(arg,data) 
+if text == 'تفعيل' and is_sudo(msg) and add_in_ch(msg) then  function check_can_send(extra,result,success)  username = '@'..(result.username_ or 'لايوجد معرف ❌')..''  if not msg.can_be_deleted_ == true then storm_sendMsg(msg.chat_id_, msg.id_, 1, "✖ ❯ انا لست ادمن في الكروب 🍃\n", 1, "md") else tahadevstorm:set("addfrebot:"..msg.chat_id_, true) tahadevstorm:sadd('bot:gpsby:id', msg.chat_id_)  tahadevstorm:sadd("botgps", msg.chat_id_) local function cb(extra,result,success) local moder = result.members_   for i = 0 , #moder do   if tahadevstorm:sismember('mods:'..msg.chat_id_,moder[i].user_id_) then   else tahadevstorm:sadd('mods:'..msg.chat_id_,moder[i].user_id_) end  end end    chek_moder(msg.chat_id_,cb)   function gpinfo(arg,data)   local function cb(extra,result,success)  local moder = result.members_    for i = data.administrator_count_ - 1 , #moder do   if tahadevstorm:sismember('moder'..msg.chat_id_,moder[i].user_id_) then  else tahadevstorm:sadd('moder'..msg.chat_id_,moder[i].user_id_) end   end end  chek_moder(msg.chat_id_,cb) end getChannelFull(msg.chat_id_, gpinfo, nil)  tahadevstorm:sadd("addgrop", msg.chat_id_) 
+local zo = '\n`┄•ٴ—☸——┈┉━☼━┉┄——☸•┄ `\n📬┊المجموعه *{ '..title_name(msg.chat_id_)..' }*\n📬 ❯❯ 🇮⁽🇮🇶تم تفعيل المجموعه بنجاح 
+
+ بنجاح ❮❮ 📬\n`┄┄┄┄┄┄┄┄┄┄┄┄┄┄`\n☤┊بواسطه *{* ['..username..'] *}*\n`┄•ٴ—⚜——┈┉━☸━┉┄——⚜•┄ `'  storm_sendMsg(msg.chat_id_, msg.id_, 1,zo, 1, 'md')    end if not is_devtaha(msg) then    if not tahadevstorm:get("data:bot:"..msg.chat_id_) then function gpinfo(arg,data) 
 local text = [[
 💥 اهلا عزيزي المطور 💥
 📪| لقد تم تفعيل مجموعه جديده
@@ -991,7 +993,7 @@ local add_bot_in_group = [[
 📮┊للتفعيل اضف البوت الى الكروب
 🎳┊ثم ارسل تفعيل البوت
 <b>=•=•=•=•=•=•=•=•=•=•=•=•=</b>
-💢┊قناتنا @STORMCLI   
+🌐┊MEXECOTEAM┇@MEXIC_TV   
 ]] storm_sendMsg(msg.chat_id_, msg.id_, 1,add_bot_in_group, 1, 'html')  end if not is_devtaha then if not tahadevstorm:get("data:bot:"..msg.chat_id_) then 
 local added = [[💥 اهلا عزيزي المطور 💥
 📪| لقد تم تعطيل البوت الخدمي في مجموعه
@@ -1014,7 +1016,7 @@ local add_bot_in_group = [[
 📫┊تم رفع الادمنيه المجموعه ✔
 📮┊للتعطيل ارسل تعطيل البوت 🔥
 <b>=•=•=•=•=•=•=•=•=•=•=•=•=</b>
-💢┊قناتنا @STORMCLI   
+🌐┊MEXECOTEAM┇@MEXIC_TV   
 ]]  tahadevstorm:sadd('bot:gpsby:id', msg.chat_id_) tahadevstorm:sadd("botgps", msg.chat_id_) tahadevstorm:set("addfrebot:"..msg.chat_id_, true)  tahadevstorm:sadd("moder"..msg.chat_id_, msg.sender_user_id_)  tahadevstorm:set("setmoder:"..msg.chat_id_, true)   storm_sendMsg(msg.chat_id_, msg.id_, 1,add_bot_in_group, 1,'html') end  end if not tahadevstorm:get("data:bot:"..msg.chat_id_) then  if not is_devtaha(msg) then
 local added = [[💥 اهلا عزيزي المطور 💥
 📪| لقد تم تفعيل البوت الخدمي في مجموعه
@@ -1060,7 +1062,7 @@ if text == "حذف كليشه ستارت" and is_devtaha(msg) then  tahadevstorm
 if text == 'رتبتي' then  local msgtaha = 357 local msggstaha = tahadevstorm:get('user:messages:'..msg.chat_id_..':'..msg.sender_user_id_) or 0  local nupmsgg =  tonumber((msggstaha / msgtaha) * 100)   local  sto = 1  for k,v in pairs(tahadevstorm:hkeys("user:messages"..msg.chat_id_..":*")) do if tahadevstorm:get("user:messages"..msg.chat_id_":"..v) > sto then  sto = tahadevstorm:get("user:messages"..msg.chat_id_":"..v) end end local msguser = tonumber(tahadevstorm:get('msg:user:'..msg.chat_id_..':'..msg.sender_user_id_) or 1) local ch =  '@STORMCLI' local msgs = tahadevstorm:get('user:messages:'..msg.chat_id_..':'..msg.sender_user_id_) if is_devtaha(msg) then t = 'مطور اساسي 🕹'  elseif is_sudo(msg) then t = 'مطور 💥'  elseif is_owner(msg) then t = 'المنشئ 🔥'  elseif is_monsh(msg) then t = 'المدير ✨'     elseif is_mod(msg) then t = 'ادمن الكروب 👮'  elseif is_vipgroups(msg) then t = 'مميز عام ✨'  elseif is_vipgroup(msg) then t = 'مميز 🚸'   else t = 'مجرد عضو 🙌' end
 local taha = [[
 📮 ❯  اهلا بك في معلومات ❮ 📮
-ٴ—⚜——༺❯🚸❮༻——⚜–
+ٴٴ—⚜——┈┉━📡━┉┄——⚜
 📬┊ ايديك <b>{]]..msg.sender_user_id_..[[}</b>
 📯┊ معرفك  <b>{</b>]]..storm_get_user(msg.sender_user_id_)..[[<b>}</b>
 🎮┊ رتبتك ( ]]..t..[[ )
@@ -1069,13 +1071,13 @@ local taha = [[
 🚀┊تفاعلك ( ]]..formsgg(msguser)..[[ )
 💥┊نسبه تفاعلك ( <b>]]..string.sub(nupmsgg, 1,5)..[[ % </b> )
 🎳┊ اسمك  ( <code>]]..storm_get_name(msg.sender_user_id_)..[[ </code> )
-ٴ—⚜——༺❯🚸❮༻——⚜–
+ٴٴ—⚜——┈┉━📡━┉┄——⚜
 📮 ❯ المطور @]]..sudouser..[[
 ]] storm_sendMsg( msg.chat_id_, msg.id_, 1, taha, 1, "html") end 
 if text == 'موقعي' then local msguser = tonumber(tahadevstorm:get('msg:user:'..msg.chat_id_..':'..msg.sender_user_id_) or 1)  local msgtaha = 357 local msggstaha = tahadevstorm:get('user:messages:'..msg.chat_id_..':'..msg.sender_user_id_) or 0  local nupmsgg =  tonumber((msggstaha / msgtaha) * 100)   local  tah = 1  for k,v in pairs(tahadevstorm:hkeys("user:messages"..msg.chat_id_..":*")) do if tahadevstorm:get("user:messages"..msg.chat_id_":"..v) > taha then  tah = tahadevstorm:get("user:messages"..msg.chat_id_":"..v) end end local ch =  '@STORMCLI' local msgs = tahadevstorm:get('user:messages:'..msg.chat_id_..':'..msg.sender_user_id_) if is_devtaha(msg) then t = 'مطور اساسي 🕹'  elseif is_sudo(msg) then t = 'مطور 💥'  elseif is_owner(msg) then t = 'المنشئ 💥'  elseif is_monsh(msg) then t = 'المدير ✨'    elseif is_mod(msg) then t = 'ادمن الكروب 👮'  elseif is_vipgroups(msg) then t = 'مميز عام ✨'  elseif is_vipgroup(msg) then t = 'مميز 🚸'   else t = 'مجرد عضو 🙌' end 
 local taha = [[
 📮 ❯  اهلا بك في معلومات ❮ 📮
-ٴ—⚜——༺❯🚸❮༻——⚜–
+ٴٴ—⚜——┈┉━📡━┉┄——⚜
 🚸┊ ايديك <b>{]]..msg.sender_user_id_..[[}</b>
 📯┊ معرفك  <b>{</b>]]..storm_get_user(msg.sender_user_id_)..[[<b>}</b>
 🎮┊ رتبتك ( ]]..t..[[ )
@@ -1084,7 +1086,7 @@ local taha = [[
 🚀┊تفاعلك ( ]]..formsgg(msguser)..[[ )
 💥┊نسبه تفاعلك ( <b>]]..string.sub(nupmsgg, 1,5)..[[ % </b> )
 📬┊ اسمك  ( <code>]]..storm_get_name(msg.sender_user_id_)..[[ </code> )
-ٴ—⚜——༺❯🚸❮༻——⚜–
+ٴ—⚜——┈┉━📡━┉┄——⚜–
 📮 ❯ المطور @]]..sudouser..[[
 ]] storm_sendMsg( msg.chat_id_, msg.id_, 1, taha, 1, "html") end 
 if text == 'عدد الاضافه' or text == 'شكد اضيف' or text == 'شكد العدد' then local whatnumadded = (tahadevstorm:get('setadd:'..msg.chat_id_) or '0') storm_sendMsg(msg.chat_id_, msg.id_, 1,"📇 ❯❯ عدد الاضافات المطلوبه\n🚸❯❯ *"..whatnumadded.."* اشخاص ❮❮🚸\n", 1, 'md') end
@@ -1469,9 +1471,11 @@ local b = taha[2] local  q = taha[2]  local  w = taha[2]  local  r = taha[2]  lo
 local ta = { ' •💚 ', '🍿﴿', '•  ❥˓  ', '💝﴿ֆ', ' • 🐼🌿', ' •🙊💙', '-✨ ', ' 〄💖‘',' ⚡️💊', '- ⁽🌷', '🔥“', '💜💭', '', '🎩','“̯ 🐼💗 ', '🐝🍷','❥̚͢₎ 😍', '🌸‘', ' 💭💔ۦ', ' 💛💭ۦ', ' ⚡️🔱ۦ','℡ᴖ̈💜', '🌔☄️₎ۦ˛', '💥♩',' ☻🔥“ٰۦ', '℡ ̇ ✨🐯⇣✦', '⁞♩⁽💎🌩₎⇣✿','ۦٰ‏┋❥ ͢˓🦁💛ۦ‏', '⚡️♛ֆ₎', '♛⇣🐰☄️₎✦', '⁾⇣✿┊❥', ' ₎✿💥🎃 ⁞“❥', '😴🌸✿⇣', '❥┊⁽ ℡🦁🌸' } 
 b = b:gsub('ا','آ') b = b:gsub("ب","بّہ") b = b:gsub("ت","تَہَٰ") b = b:gsub("ح","حہٰٰ") b = b:gsub("ج","جْۧ") b = b:gsub("خ","خٰ̐ہ") b = b:gsub("د","د") b = b:gsub("ذ","ذِ") b = b:gsub("ر","ر") b = b:gsub("ز","زَ") b = b:gsub("س","سٰٰٓ") b = b:gsub("ش","شِٰہٰٰ") b = b:gsub("ص","صۛہٰٰ") b = b:gsub("ض","ضۜہٰٰ") b = b:gsub("ظ","ظۗہٰٰ") b = b:gsub("غ","غہٰٰ") b = b:gsub("ف","ف͒ہٰٰ") b = b:gsub("ق","قྀ̲ہٰٰٰ") b = b:gsub("ك","ڪٰྀہٰٰٖ") b = b:gsub("ل","ل") b = b:gsub("ن","نَِٰہٰ") b = b:gsub("ه","ھہ") b = b:gsub("و","وِ") b = b:gsub("طۨہٰٰ","ط") b = b:gsub("ث","ثہٰٰ") b = b:gsub("ي","يِٰہ") b = b:gsub("ع","؏ۤـہٰٰ") q = q:gsub('ض', 'ضِـٰٚـ') q = q:gsub('ص', 'صِـٰٚـ') q = q:gsub('ث', 'ثِـٰٚـ') q = q:gsub('ق', 'قِـٰٚـ') q = q:gsub('ف', 'فِ͒ـٰٚـ') q = q:gsub('غ', 'غِـٰٚـ') q = q:gsub('ع', 'عِـٰٚـ') q = q:gsub('خ', 'خِ̐ـٰٚـ') q = q:gsub('ح', 'حِـٰٚـ') q = q:gsub('ج', 'جِـٰٚـِِـٰٚـِْ') q = q:gsub('ش', 'شِـٰٚـ') q = q:gsub('س', 'سِـٰٚـ') q = q:gsub('ي', 'يِـٰٚـ') q = q:gsub('ب', 'بِـٰٚـ') q = q:gsub('ل', 'لِـٰٚـ') q = q:gsub('ا', 'آ') q = q:gsub('ت', 'تِـٰٚـ') q = q:gsub('ن', 'نِـٰٚـ') q = q:gsub('م', 'مِـٰٚـ') q = q:gsub('ك', 'ڪِـٰٚـ') q = q:gsub('ط', 'طِـٰٚـ') q = q:gsub('ذ', 'ذِـٰٚـ') q = q:gsub('ظ', 'ظِـٰٚـ') q = q:gsub('ء', 'ء') q = q:gsub('ؤ', 'ؤ') q = q:gsub('ر', 'ر') q = q:gsub('ى', 'ى') q = q:gsub('ز', 'ز') q = q:gsub('ظ', 'ظِـٰٚـ') q = q:gsub('و', 'ﯛ̲୭') q = q:gsub("ه", "ۿۿہ")   w = w:gsub('ض', 'ض͜ـ')  w = w:gsub('ص', 'ص͜ـ')  w = w:gsub('ث', 'ث͜ـ͜ـ')  w = w:gsub('ق', 'ق͜ـ')  w = w:gsub('ف', 'ف͒͜ـ')  w = w:gsub('غ', 'غ͜ـ')  w = w:gsub('ع', 'ع͜ـ')  w = w:gsub('خ', 'خ̐͜ـ')  w = w:gsub('ح', 'ح͜ـ')  w = w:gsub('ج', 'ج͜ـ')  w = w:gsub('ش', 'ش͜ـ')  w = w:gsub('س', 'س͜ـ')  w = w:gsub('ي', 'ي͜ـ')  w = w:gsub('ب', 'ب͜ـ')  w = w:gsub('ل', 'ل͜ـ')  w = w:gsub('ا', 'آ')  w = w:gsub('ت', 'ت͜ـ')  w = w:gsub('ن', 'ن͜ـ')  w = w:gsub('م', 'م͜ـ')  w = w:gsub('ك', 'ڪ͜ـ')  w = w:gsub('ط', 'ط͜ـ')  w = w:gsub('ظ', 'ظ͜ـ')  w = w:gsub('ء', 'ء')  w = w:gsub('ؤ', 'ؤ')  w = w:gsub('ر', 'ر')  w = w:gsub('ى', 'ى')  w = w:gsub('ز', 'ز')  w = w:gsub('ظ', 'ظـ')  w = w:gsub('و', 'ﯛ̲୭')  w = w:gsub("ه", "ۿۿہ") e = e:gsub('ض', 'ضہ') e = e:gsub('ص', 'صہ') e = e:gsub('ث', 'ثہ') e = e:gsub('ق', 'قہ') e = e:gsub('ف', 'فہ') e = e:gsub('غ', 'غہ') e = e:gsub('ع', 'عہ') e = e:gsub('خ', 'خہ') e = e:gsub('ح', 'حہ') e = e:gsub('ج', 'جہ') e = e:gsub('ش', 'شہ') e = e:gsub('س', 'سہ') e = e:gsub('ي', 'يہ') e = e:gsub('ب', 'بہ') e = e:gsub('ل', 'ل') e = e:gsub('ا', 'آ') e = e:gsub('ت', 'تہ') e = e:gsub('ن', 'نہ') e = e:gsub('م', 'مہ') e = e:gsub('ك', 'كہ') e = e:gsub('ط', 'طہ') e = e:gsub('ظ', 'ظہ') e = e:gsub('ء', 'ء') e = e:gsub('ؤ', 'ؤ') e = e:gsub('ر', 'ر') e = e:gsub('ى', 'ى') e = e:gsub('ز', 'ز') e = e:gsub('و', 'ﯛ̲୭') e = e:gsub("ه", "ۿۿہ") t = t:gsub('ض', 'ضِٰــ') t = t:gsub('ص', 'صِٰــ') t = t:gsub('ث', 'ثِٰــ') t = t:gsub('ق', 'قِٰــ') t = t:gsub('ف', 'فِٰ͒ــ') t = t:gsub('غ', 'غِٰــ') t = t:gsub('ع', 'عِٰــ') t = t:gsub('خ', 'خِٰ̐ــ') t = t:gsub('ح', 'حِٰــ') t = t:gsub('ج', 'جِٰــ') t = t:gsub('ش', 'شِٰــ') t = t:gsub('س', 'سِٰــ') t = t:gsub('ي', 'يِٰــ') t = t:gsub('ب', 'بِٰــ') t = t:gsub('ل', 'لِٰــ') t = t:gsub('ا', 'آ') t = t:gsub('ت', 'تِٰــ') t = t:gsub('ن', 'نِٰــ') t = t:gsub('م', 'مِٰــ') t = t:gsub('ك', 'ڪِٰــ') t = t:gsub('ط', 'طِٰــ') t = t:gsub('ظ', 'ظِٰــ') t = t:gsub('ء', 'ء') t = t:gsub('ؤ', 'ؤ') t = t:gsub('ر', 'ر') t = t:gsub('ى', 'ى') t = t:gsub('ز', 'ز') t = t:gsub('و', 'ﯛ̲୭') t = t:gsub("ه", "໋۠هہؚ")
 local test = [[ 
-💫┊اهلا بك عزيزي 
-✨┊اضغط عل اسم ليتم نسخه
-ٴ┄•💥•┄༻💢༺┄•💥•┄
+✨┇اهـٰٰٖـَلُآ بـٌْℋــ☃︎ـك حيـٍّْ🄴ٰـﭑتـٰٖۧـٰٰٰٖٖٖۧـ๋͜يَ 🧡🤤)⇣℡⇓ 
+
+☑️┇اضـﹻٰ۫ـغۂٰ۫طﹻٰ۫ﹻۧ عۂ͜ާـلـى ﺂلاسـٰ̲م لـَ͢يـٖۧتم نسُـٰٚـُخـﹻٰ۫ﹻۧهۂٰ۫،🕊🍭
+
+┈┉━━┉ ☬ ┉━━┉┄
 
 *1 •* `]]..b..[[]]..ta[math.random(#ta)]..[[`
 ---------------------------------
@@ -1483,8 +1487,8 @@ local test = [[
 ---------------------------------
 *5 •* `]]..t..[[]]..ta[math.random(#ta)]..[[`
 
-ٴ┄•💥•┄༻💢༺┄•💥•┄
-📬┊ @STORMCLI
+◂⠀━━━━ 🖤 ━━━━⠀▸
+📡┊ @VI_P2
 ]]
 storm_sendMsg( msg.chat_id_, msg.id_, 1, test, 1, "md") end
 if text and text:match("^زخرفه (.+)$") and not text:match("^زخرفه ([%ج%ح%خ%ه%ع%غ%ف%ق%ث%ص%ض%ط%ك%م%ن%ت%ا%ل%ب%ي%س%ش%ة%و%ر%ز%ژ%د%ذ%ظ%ؤ%ء%ئ%ى%پ%إ%آ%ء%گ%_]+)$") and not text:match("^زخرفه ([%ج%ح%خ%ه%ع%غ%ف%ق%ث%ص%ض%ط%ك%م%ن%ت%ا%ل%ب%ي%س%ش%ة%و%ر%ز%ژ%د%ذ%ظ%ؤ%ء%ئ%ى%پ%إ%آ%ء%گ%_]+) ([%ج%ح%خ%ه%ع%غ%ف%ق%ث%ص%ض%ط%ك%م%ن%ت%ا%ل%ب%ي%س%ش%ة%و%ر%ز%ژ%د%ذ%ظ%ؤ%ء%ئ%ى%پ%إ%آ%ء%گ%_]+)$") then
@@ -1493,9 +1497,10 @@ local b = taha[2] local  s = taha[2]  local  t = taha[2]  local  m = taha[2]  lo
 local ta = { ' •🔥✨ ', '🔅🔥﴿', '•  ❥˓  ', '💝﴿ֆ', ' • 🐼🌿', ' •🙊💙', '-🐥✨ ', ' 〄😻‘',' ⚡️', '- ⁽🌷', '🔥“', '💭', '', '🎩🍿','“̯ 🐼💗 ', '🐝🍷','❥̚͢₎ 🐣', '👄‘', ' 💭ۦ', ' 💛💭ۦ', ' ⚡️ۦ','℡ᴖ̈', '💋☄️₎ۦ˛', '♩',' ☻🔥“ٰۦ', '℡ ̇ ✨🐯⇣✦', '⁞♩⁽💎🌩₎⇣✿','ۦٰ‏┋❥ ͢˓🦁💛ۦ‏', '⚡️♛ֆ₎', '♛⇣🐰☄️₎✦', '⁾⇣✿💖┊❥', ' ₎✿🎃 ⁞“❥', '😴✿⇣', '❥┊⁽ ℡🦁' }
 b = b:gsub('a', 'ᴀ') b = b:gsub('b', 'ʙ') b = b:gsub('c', 'ᴄ') b = b:gsub('d', 'ᴅ') b = b:gsub('e', 'ᴇ') b = b:gsub('f', 'ᴈ') b = b:gsub('g', 'ɢ') b = b:gsub('h', 'ʜ') b = b:gsub('i', 'ɪ') b = b:gsub('j', 'ᴊ') b = b:gsub('k', 'ᴋ') b = b:gsub('l', 'ʟ') b = b:gsub('m', 'ᴍ') b = b:gsub('n', 'ɴ') b = b:gsub('o', 'ᴏ') b = b:gsub('p', 'ᴘ') b = b:gsub('q', 'ᴓ') b = b:gsub('r', 'ʀ') b = b:gsub('s', 'ᴤ') b = b:gsub('t', 'ᴛ') b = b:gsub('u', 'ᴜ') b = b:gsub('v', 'ᴠ') b = b:gsub('w', 'ᴡ') b = b:gsub('x', 'ᴥ') b = b:gsub('y', 'ʏ') b = b:gsub('z', 'ᴢ') t = t:gsub('a','ᗩ') t = t:gsub('A','ᗩ') t = t:gsub("b","ᗷ") t = t:gsub("B","ᗷ") t = t:gsub("c","ᑕ") t = t:gsub("C","ᑕ") t = t:gsub("d","ᗪ") t = t:gsub("D","ᗪ") t = t:gsub("e","E") t = t:gsub("E","E") t = t:gsub("f","ᖴ") t = t:gsub("F","ᖴ") t = t:gsub("g","G") t = t:gsub("G","G") t = t:gsub("h","ᕼ") t = t:gsub("H","ᕼ") t = t:gsub("i","I") t = t:gsub("I","I") t = t:gsub("j","ᒍ") t = t:gsub("J","ᒍ") t = t:gsub("k","K") t = t:gsub("K","K") t = t:gsub("l","ᒪ") t = t:gsub("L","ᒪ") t = t:gsub("m","ᗰ") t = t:gsub("M","ᗰ") t = t:gsub("n","ᑎ") t = t:gsub("N","ᑎ") t = t:gsub("o","O") t = t:gsub("O","O") t = t:gsub("p","ᑭ") t = t:gsub("P","ᑭ") t = t:gsub("q","ᑫ") t = t:gsub("Q","ᑫ") t = t:gsub("r","ᖇ") t = t:gsub("R","ᖇ") t = t:gsub("s","ᔕ") t = t:gsub("S","ᔕ") t = t:gsub("t","T") t = t:gsub("T","T") t = t:gsub("u","ᑌ") t = t:gsub("U","ᑌ") t = t:gsub("v","ᐯ") t = t:gsub("V","ᐯ") t = t:gsub("w","ᗯ") t = t:gsub("x","᙭") t = t:gsub("y","Y") t = t:gsub("z","ᘔ") s = s:gsub('a', '🄰') s = s:gsub('b', '🄱') s = s:gsub('c', '🄲') s = s:gsub('d', '🄳') s = s:gsub('e', '🄴') s = s:gsub('f', '🄵') s = s:gsub('g', '🄶') s = s:gsub('h', '🄷') s = s:gsub('i', '🄸') s = s:gsub('j', '🄹') s = s:gsub('k', '🄺') s = s:gsub('l', '🄻') s = s:gsub('m', '🄼') s = s:gsub('n', '🄽') s = s:gsub('o', '🄾') s = s:gsub('p', '🄿') s = s:gsub('q', '🅀') s = s:gsub('r', '🅁') s = s:gsub('s', '🅂') s = s:gsub('t', '🅃') s = s:gsub('u', '🅄') s = s:gsub('v', '🅅') s = s:gsub('w', '🅆') s = s:gsub('x', '🅇') s = s:gsub('y', '🅈') s = s:gsub('z', '🅉') m = m:gsub('a', '̅α')  m = m:gsub('b', '̅в')  m = m:gsub('c', '̅c')  m = m:gsub('d', '̅ɒ')  m = m:gsub('e', '̅є')  m = m:gsub('f', '̅f')  m = m:gsub('g', '̅ɢ')  m = m:gsub('h', '̅н')  m = m:gsub('i', '̅ɪ')  m = m:gsub('j', '̅ᴊ')  m = m:gsub('k', '̅ĸ')  m = m:gsub('l', '̅ℓ')  m = m:gsub('m', '̅м')  m = m:gsub('n', '̅и')  m = m:gsub('o', '̅σ')  m = m:gsub('p', '̅ρ')  m = m:gsub('q', '̅q')  m = m:gsub('r', '̅я')  m = m:gsub('s', '̅s')  m = m:gsub('t', '̅τ')  m = m:gsub('u', '̅υ')  m = m:gsub('v', '̅v')  m = m:gsub('w', '̅ω')  m = m:gsub('x', '̅x')  m = m:gsub('y', '̅y')  m = m:gsub('z', '̅z') n = n:gsub('a', '۰۪۫A۪۫۰') n = n:gsub('b', '۰۪۫B۪۫۰') n = n:gsub('c', '۰۪۫C۪۫۰') n = n:gsub('d', '۰۪۫D۪۫۰') n = n:gsub('e', '۰۪۫E۪۫۰') n = n:gsub('f', '۰۪۫F۪۫۰') n = n:gsub('g', '۰۪۫G۪۫۰') n = n:gsub('h', '۰۪۫H۪۫۰') n = n:gsub('i', '۰۪۫I۪۫۰') n = n:gsub('j', '۰۪۫J۪۫۰') n = n:gsub('k', '۰۪۫K۪۫۰') n = n:gsub('l', '۰۪۫L۪۫۰') n = n:gsub('m', '۰۪۫M۪۫۰') n = n:gsub('n', '۰۪۫N۪۫۰') n = n:gsub('o', '۰۪۫O۪۫۰') n = n:gsub('p', '۰۪۫P۪۫۰') n = n:gsub('q', '۰۪۫Q۪۫۰') n = n:gsub('r', '۰۪۫R۪۫۰') n = n:gsub('s', '۰۪۫S۪۫۰') n = n:gsub('t', '۰۪۫T۪۫۰') n = n:gsub('u', '۰۪۫U۪۫۰') n = n:gsub('v', '۰۪۫V۪۫۰') n = n:gsub('w', '۰۪۫W۪۫۰') n = n:gsub('x', '۰۪۫X۪۫۰') n = n:gsub('y', '۰۪۫Y۪۫۰') n = n:gsub('z', '۰۪۫Z۪۫۰') v = v:gsub('a', 'λ') v = v:gsub('b', 'ß') v = v:gsub('c', 'Ȼ') v = v:gsub('d', 'ɖ') v = v:gsub('e', 'ε') v = v:gsub('f', 'ʃ') v = v:gsub('g', 'Ģ') v = v:gsub('h', 'ħ') v = v:gsub('i', 'ί') v = v:gsub('j', 'ĵ') v = v:gsub('k', 'κ') v = v:gsub('l', 'ι') v = v:gsub('m', 'ɱ') v = v:gsub('n', 'ɴ') v = v:gsub('o', 'Θ') v = v:gsub('p', 'ρ') v = v:gsub('q', 'ƣ') v = v:gsub('r', 'ર') v = v:gsub('s', 'Ș') v = v:gsub('t', 'τ') v = v:gsub('u', 'Ʋ') v = v:gsub('v', 'ν') v = v:gsub('w', 'ώ') v = v:gsub('x', 'Χ') v = v:gsub('y', 'ϓ') v = v:gsub('z', 'Հ')  c = c:gsub('a', 'Ａ') c = c:gsub('b', 'Ｂ') c = c:gsub('c', 'Ｃ') c = c:gsub('d', 'Ｄ') c = c:gsub('e', 'Ｅ') c = c:gsub('f', 'Ｆ') c = c:gsub('g', 'Ｇ') c = c:gsub('h', 'Ｈ') c = c:gsub('i', 'Ｉ') c = c:gsub('j', 'Ｊ') c = c:gsub('k', 'Ｋ') c = c:gsub('l', 'Ｌ') c = c:gsub('m', 'Ｍ') c = c:gsub('n', 'Ｎ') c = c:gsub('o', 'Ｏ') c = c:gsub('p', 'Ｐ') c = c:gsub('q', 'Ｑ') c = c:gsub('r', 'Ｒ') c = c:gsub('s', 'Ｓ') c = c:gsub('t', 'Ｔ') c = c:gsub('u', 'Ｕ') c = c:gsub('v', 'Ｖ') c = c:gsub('w', 'Ｗ') c = c:gsub('x', 'Ｘ') c = c:gsub('y', 'Ｙ') c = c:gsub('z', 'Ｚ') x = x:gsub('a', 'ᴬ') x = x:gsub('b', 'ᴮ') x = x:gsub('c', 'ᶜ') x = x:gsub('d', 'ᴰ') x = x:gsub('e', 'ᴱ') x = x:gsub('f', 'ᶠ') x = x:gsub('g', 'ᴳ') x = x:gsub('h', 'ᴴ') x = x:gsub('i', 'ᴵ') x = x:gsub('j', 'ᴶ') x = x:gsub('k', 'ᴷ') x = x:gsub('l', 'ᴸ') x = x:gsub('m', 'ᴹ') x = x:gsub('n', 'ᴺ') x = x:gsub('o', 'ᴼ') x = x:gsub('p', 'ᴾ') x = x:gsub('q', 'ᵠ') x = x:gsub('r', 'ᴿ') x = x:gsub('s', 'ˁ') x = x:gsub('t', 'ᵀ') x = x:gsub('u', 'ᵁ') x = x:gsub('v', 'ᵛ') x = x:gsub('w', 'ᵂ') x = x:gsub('x', 'ˣ') x = x:gsub('y', 'ʸ') x = x:gsub('z', 'ᶻ') z = z:gsub('a', 'ᾋ') z = z:gsub('b', 'ϐ') z = z:gsub('c', 'Ƈ') z = z:gsub('d', 'Ɖ') z = z:gsub('e', 'Ἕ') z = z:gsub('f', 'Ғ') z = z:gsub('g', 'Ɠ') z = z:gsub('h', 'Ἤ') z = z:gsub('i', 'Ἷ') z = z:gsub('j', 'Ј') z = z:gsub('k', 'Ḱ') z = z:gsub('l', 'Ŀ') z = z:gsub('m', 'Ṃ') z = z:gsub('n', 'Ɲ') z = z:gsub('o', 'Ὃ') z = z:gsub('p', 'Ƥ') z = z:gsub('q', 'Q') z = z:gsub('r', 'Ȓ') z = z:gsub('s', 'Ṩ') z = z:gsub('t', 'Ҭ') z = z:gsub('u', 'Ȗ') z = z:gsub('v', 'V') z = z:gsub('w', 'Ẃ') z = z:gsub('x', 'Ẋ') z = z:gsub('y', 'Ὓ') z = z:gsub('z', 'Ẕ') l = l:gsub('a', '[̲̅a̲̅]') l = l:gsub('b', '[̲̅b̲̅]') l = l:gsub('c', '[̲̅c̲̅]') l = l:gsub('d', '[̲̅d̲̅]') l = l:gsub('e', '[̲̅e̲̅]') l = l:gsub('f', '[̲̅f̲̅]') l = l:gsub('g', '[̲̅g̲̅]') l = l:gsub('h', '[̲̅h̲̅]') l = l:gsub('i', '[̲̅i̲̅]') l = l:gsub('j', '[̲̅j̲̅]') l = l:gsub('k', '[̲̅k̲̅]') l = l:gsub('l', '[̲̅l̲̅]') l = l:gsub('m', '[̲̅m̲̅]') l = l:gsub('n', '[̲̅n̲̅]') l = l:gsub('o', '[̲̅o̲̅]') l = l:gsub('p', '[̲̅p̲̅]') l = l:gsub('q', '[̲̅q̲̅]') l = l:gsub('r', '[̲̅r̲̅]') l = l:gsub('s', '[̲̅s̲̅]') l = l:gsub('t', '[̲̅t̲̅]') l = l:gsub('u', '[̲̅u̲̅]') l = l:gsub('v', '[̲̅v̲̅]') l = l:gsub('w', '[̲̅w̲̅]') l = l:gsub('x', '[̲̅x̲̅]') l = l:gsub('y', '[̲̅y̲̅]') l = l:gsub('z', 'z') k = k:gsub('a', 'ɑ̃̾') k = k:gsub('b', 'в̃̾') k = k:gsub('c', 'c̃̾') k = k:gsub('d', 'd̃̾') k = k:gsub('e', 'ǝ̃̾') k = k:gsub('f', 'г̵̵') k = k:gsub('g', 'G̃̾') k = k:gsub('h', 'н̃̾') k = k:gsub('i', 'ı̃̾') k = k:gsub('j', 'τ̃̾') k = k:gsub('k', 'к̃̾') k = k:gsub('l', 'l̃̾') k = k:gsub('m', 'м̃̾') k = k:gsub('n', 'и̃̾') k = k:gsub('o', 'σ̃̾') k = k:gsub('p', 'ρ̃̾') k = k:gsub('q', 'Q̃̾') k = k:gsub('r', 'я̃̾') k = k:gsub('s', 'ƨ̃̾') k = k:gsub('t', 'т̃̾') k = k:gsub('u', 'υ̃̾') k = k:gsub('v', 'ν̃̾') k = k:gsub('w', 'ω̃̾') k = k:gsub('x', 'x̃̾') k = k:gsub('y', 'ч̃̾') k = k:gsub('z', 'z̃̾') j = j:gsub('a', 'ɑ̝̚') j = j:gsub('b', 'в̝̚') j = j:gsub('c', 'c̝̚') j = j:gsub('d', 'd̝̚') j = j:gsub('e', 'ǝ̝̚') j = j:gsub('f', 'г̵̵') j = j:gsub('g', 'G̝̚') j = j:gsub('h', 'н̝̚') j = j:gsub('i', 'ı̝̚') j = j:gsub('j', 'τ') j = j:gsub('k', 'к̝') j = j:gsub('l', 'l̝̚') j = j:gsub('m', 'м̝̚') j = j:gsub('n', 'и̝̚') j = j:gsub('o', 'σ̝̚') j = j:gsub('p', 'ρ̝̚') j = j:gsub('q', 'Q̝̚') j = j:gsub('r', 'я̝̚') j = j:gsub('s', 'ƨ̝̚') j = j:gsub('t', 'т̝̚') j = j:gsub('u', 'υ̝̚') j = j:gsub('v', 'ν̝̚') j = j:gsub('w', 'ω̝̚') j = j:gsub('x', 'x̝̚') j = j:gsub('y', 'ч̝̚') j = j:gsub('z', 'z̝̚') h = h:gsub('a', 'ค') h = h:gsub('b', '๒') h = h:gsub('c', 'ς') h = h:gsub('d', '๔') h = h:gsub('e', 'є') h = h:gsub('f', 'Ŧ') h = h:gsub('g', 'g') h = h:gsub('h', 'ђ') h = h:gsub('i', 'เ') h = h:gsub('j', 'ן') h = h:gsub('k', 'к') h = h:gsub('l', 'l') h = h:gsub('m', '๓') h = h:gsub('n', 'ภ') h = h:gsub('o', '๏') h = h:gsub('p', 'ק') h = h:gsub('q', 'ợ') h = h:gsub('r', 'г') h = h:gsub('s', 'ร') h = h:gsub('t', 't') h = h:gsub('u', 'ย') h = h:gsub('v', 'ש') h = h:gsub('w', 'ฬ') h = h:gsub('x', 'א') h = h:gsub('y', 'ץ') h = h:gsub('z', 'z')  g = g:gsub('a', 'Á') g = g:gsub('b', 'ß') g = g:gsub('c', 'Č') g = g:gsub('d', 'Ď') g = g:gsub('e', 'Ĕ') g = g:gsub('f', 'Ŧ') g = g:gsub('g', 'Ğ') g = g:gsub('h', 'Ĥ') g = g:gsub('i', 'Ĩ') g = g:gsub('j', 'Ĵ') g = g:gsub('k', 'Ķ') g = g:gsub('l', 'Ĺ') g = g:gsub('m', 'M') g = g:gsub('n', 'Ń') g = g:gsub('o', 'Ő') g = g:gsub('p', 'P') g = g:gsub('q', 'Q') g = g:gsub('r', 'Ŕ') g = g:gsub('s', 'Ś') g = g:gsub('t', 'Ť') g = g:gsub('u', 'Ú') g = g:gsub('v', 'V') g = g:gsub('w', 'Ŵ') g = g:gsub('x', 'Ж') g = g:gsub('y', 'Ŷ') g = g:gsub('z', 'Ź') 
 local test = [[ 
-📬┊اهلا بك عزيزي 
-✨┊اضغط عل اسم ليتم نسخه
-ٴ┄•💥•┄༻💢༺┄•💥•┄
+✨┇اهـٰٰٖـَلُآ بـٌْℋــ☃︎ـك حيـٍّْ🄴ٰـﭑتـٰٖۧـٰٰٰٖٖٖۧـ๋͜يَ 🧡🤤)⇣℡⇓ 
+
+☑️┇اضـﹻٰ۫ـغۂٰ۫طﹻٰ۫ﹻۧ عۂ͜ާـلـى ﺂلاسـٰ̲م لـَ͢يـٖۧتم نسُـٰٚـُخـﹻٰ۫ﹻۧهۂٰ۫،🕊🍭
+┈┉━━┉ ☬ ┉━━┉┄
 
 *1 •* `]]..b..[[]]..ta[math.random(#ta)]..[[`
 ---------------------------------
@@ -1525,15 +1530,15 @@ local test = [[
 ---------------------------------
 *14 •* `]]..t..[[]]..ta[math.random(#ta)]..[[`
 
-ٴ┄•💥•┄༻💢༺┄•💥•┄
-🚸┊ @STORMCLI
+◂⠀━━━━ 🖤 ━━━━⠀▸
+📡┊ @VI_P2
 ]]
 storm_sendMsg( msg.chat_id_, msg.id_, 1, test, 1, "md") end
 if chat_type == 'super' then if text == "id" then
 function id_by_reply(extra, result, success) storm_sendMsg(msg.chat_id_, msg.id_, 1, '<b>📫 • ايديه </b> : [ <code>'..result.sender_user_id_..'</code> ]', 1, 'html') end  if tonumber(msg.reply_to_message_id_) == 0 then else getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),id_by_reply) end end
 if text == ("ايدي") and msg.reply_to_message_id_ == 0 then function getmepar(extra,result,success)  username = '@'..(result.username_ or 'ماكو معرف ❌')..''  local name = tahadevstorm:hget('gps:settings:'..msg.sender_user_id_ ,"setnameid")  if not name then   function setname(extra,result,success)  snm = result.first_name_  tahadevstorm:hset('gps:settings:'..msg.sender_user_id_ ,"setnameid" , snm)  end   getUser(msg.sender_user_id_,setname)  name = tahadevstorm:hget('gps:settings:'..msg.sender_user_id_ ,"setnameid") or '...'  end  local msgtaha = 357   local msggstaha = tahadevstorm:get('user:messages:'..msg.chat_id_..':'..msg.sender_user_id_) or 0   local nupmsgg =  tonumber((msggstaha / msgtaha) * 100)    local  tahah = 1   for k,v in pairs(tahadevstorm:hkeys("user:messages"..msg.chat_id_..":*")) do   if tahadevstorm:get("user:messages"..msg.chat_id_":"..v) > tahah then   tahah = tahadevstorm:get("user:messages"..msg.chat_id_":"..v)  end  end  local msguser = tonumber(tahadevstorm:get('user:messages:'..msg.chat_id_..':'..msg.sender_user_id_) or 1)  local gmsgs = tahadevstorm:get('groupmsg:'..msg.chat_id_..':')  local function getpro(extra, result, success)  if result.photos_[0] then if is_devtaha(msg) then t = 'مطور اساسي ♨'  elseif is_sudo(msg) then t = 'مطور 💥'  elseif is_owner(msg) then t = 'المنشئ 💥'  elseif is_monsh(msg) then t = 'المدير ✨'     elseif is_mod(msg) then t = 'ادمن الكروب 👮'  elseif is_vipgroups(msg) then t = 'مميز عام ✨'  elseif is_vipgroup(msg) then t = 'مميز 🎫'   else t = 'مجرد عضو 🙌'   end if not tahadevstorm:get('lock:id'..msg.chat_id_) then sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,'\n🚸 ❯ ايديك  ( '..msg.sender_user_id_..' )\n📯 ❯ معرفك ( '..username..' )\n♨ ❯ موقعك ( '..t..' )\n💠 ❯ تفاعلك ( '..formsgg(msguser)..' )\n📇 ❯ رسائلك ( '..msguser..' )\n📈 ❯ نسبه تفاعلك ( '..string.sub(nupmsgg, 1,5)..' % )\n📷 ❯ عدد صورك ( '..result.total_count_..' )\n', 1, 'md')  else if is_devtaha(msg) then t = 'مطور اساسي ♨'  elseif is_sudo(msg) then t = 'مطور 💥'  elseif is_owner(msg) then t = 'المنشئ 📬'  elseif is_monsh(msg) then t = 'المدير ✨'     elseif is_mod(msg) then t = 'ادمن الكروب 👮'  elseif is_vipgroups(msg) then t = 'مميز عام ✨'  elseif is_vipgroup(msg) then t = 'مميز 🚸'   else t = 'مجرد عضو 😂'   end
-storm_sendMsg(msg.chat_id_, msg.id_, 1, '\n💥┊ الكروب ( <b>'..msg.chat_id_:gsub('-100','')..'</b> )\n🏅┊ ايديك  ( <b>'..msg.sender_user_id_..'</b> )\n📇┊ رسائل الكروب ( <b>'..gmsgs..'</b> )\n♻┊ معرفك ( '..username..' )\n💥┊ رسائلك ( <b>'..msguser..'</b> )\n💠┊ تفاعلك ( '..formsgg(msguser)..')\n🚀┊نسبه تفاعلك ( <b>'..string.sub(nupmsgg, 1,5)..' %</b>)\n📑┊ اسمك  ( <code>'..name..'</code> )', 1, 'html')  end else
-storm_sendMsg(msg.chat_id_, msg.id_, 1, '❌┊ انت لا تمتلك صوره في حسابك \n💥┊ الكروب ( <b>'..msg.chat_id_:gsub('-100','')..'</b> )\n🏅┊ ايديك  ( <b>'..msg.sender_user_id_..'</b> )\n📓┊ رسائل الكروب ( <b>'..gmsgs..'</b> )\n♻┊ معرفك ( '..username..' )\n💥┊ رسائلك ( <b>'..msguser..'</b> )\n🚸┊ تفاعلك ( '..formsgg(msguser)..')\n📇┊نسبه تفاعلك ( <b>'..string.sub(nupmsgg, 1,5)..' %</b>)\n🏇┊ اسمك  ( <code>'..name..'</code> )', 1, 'html')  end  end  tdcli_function ({    ID = "GetUserProfilePhotos",    user_id_ = msg.sender_user_id_,    offset_ = 0,    limit_ = 1  }, getpro, nil) end  getUser(msg.sender_user_id_, getmepar)  end
-if text and text:match("^الرتبه$") and msg.reply_to_message_id_ ~= 0 then  function id_by_reply(extra, result, success) if result.id_ then if is_devtaha(result) then t = 'مطور اساسي 🕹' elseif is_sudo(result) then t = 'مطور ✨'  elseif is_owner(result) then t = 'المنشئ 📬' elseif is_monsh(result) then t = 'المدير ✨' elseif is_mod(result) then t = 'ادمن الكروب 👮' elseif is_vipgroups(result) then t = 'مميز عام 💢' elseif is_vipgroup(result) then t = 'مميز 🚸'  else t = 'مجرد عضو 🙌' end  end  local msgss = tonumber(tahadevstorm:get('user:messages:'..msg.chat_id_..':'..result.sender_user_id_) or 0)  local msgtaha = 357 local msggstaha = tahadevstorm:get('user:messages:'..msg.chat_id_..':'..result.sender_user_id_) or 0  local nupmsgg =  tonumber((msggstaha / msgtaha) * 100)  local  tahah = 1  for k,v in pairs(tahadevstorm:hkeys("user:messages"..msg.chat_id_..":*")) do if tahadevstorm:get("user:messages"..msg.chat_id_":"..v) > tahah then  tahah = tahadevstorm:get("user:messages"..msg.chat_id_":"..v) end end text = '🚸 ❯ اهلا بك في معلوماته ❮ 🚸 \n<code>﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎</code>\n🎮￤ ايديه  <b>{ '..result.sender_user_id_..' }</b>\n📯￤رتبته <b>{ '..t..' }</b>\n📇￤ رسايله <b>{ '..(tahadevstorm:get('user:messages:'..msg.chat_id_..':'..result.sender_user_id_) or 0)..' }</b>\n📮￤ نسبه تفاعله <b>{ '..string.sub(nupmsgg, 1,5)..'% }</b>\n♻￤ تفاعله { '..formsgg(msgss)..' }\n🚀￤ معرفه <b>{</b> '..storm_get_user(result.sender_user_id_)..' <b>}</b>\n🎳￤ اسمه  {<code> '..storm_get_name(result.sender_user_id_)..' </code>}\n<code>﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎</code>\n📮 ❯ المطور @'..sudouser..''
+storm_sendMsg(msg.chat_id_, msg.id_, 1, '\n💠┊ الكروب ( <b>'..msg.chat_id_:gsub('-100','')..'</b> )\n🏅┊ ايديك  ( <b>'..msg.sender_user_id_..'</b> )\n📇┊ رسـائـلـك ( <b>'..gmsgs..'</b> )\n♻┊ معرفك ( '..username..' )\n📨┊ رسائلك ( <b>'..msguser..'</b> )\n💠┊ تفاعلك ( '..formsgg(msguser)..')\n🚀┊نسبه تفاعلك  ( <b>'..string.sub(nupmsgg, 1,5)..' %</b>)\n📑┊ اسمك  ( <code>'..name..'</code> )', 1, 'html')  end else
+storm_sendMsg(msg.chat_id_, msg.id_, 1, '❌┊ انت لا تمتلك صوره في حسابك \n💠┊ الكروب ( <b>'..msg.chat_id_:gsub('-100','')..'</b> )\n🏅┊ ايديك  ( <b>'..msg.sender_user_id_..'</b> )\n📓┊ رسائلك ( <b>'..gmsgs..'</b> )\n♻┊ معرفك ( '..username..' )\n📨┊ رسائلك ( <b>'..msguser..'</b> )\n💠┊ تفاعلك ( '..formsgg(msguser)..')\n📇┊نسبه تفاعلك  ( <b>'..string.sub(nupmsgg, 1,5)..' %</b>)\n🏇┊ اسمك  ( <code>'..name..'</code> )', 1, 'html')  end  end  tdcli_function ({    ID = "GetUserProfilePhotos",    user_id_ = msg.sender_user_id_,    offset_ = 0,    limit_ = 1  }, getpro, nil) end  getUser(msg.sender_user_id_, getmepar)  end
+if text and text:match("^الرتبه$") and msg.reply_to_message_id_ ~= 0 then  function id_by_reply(extra, result, success) if result.id_ then if is_devtaha(result) then t = 'مطور اساسي 🕹' elseif is_sudo(result) then t = 'المطور ✨'  elseif is_owner(result) then t = 'المنشئ 📬' elseif is_monsh(result) then t = 'المير ✨' elseif is_mod(result) then t = 'ادمن الكروب 👮' elseif is_vipgroups(result) then t = ' مميز عام 💢' elseif is_vipgroup(result) then t = 'مميز 🚸'  else t = 'مجرد عضو 🙌' end  end  local msgss = tonumber(tahadevstorm:get('user:messages:'..msg.chat_id_..':'..result.sender_user_id_) or 0)  local msgtaha = 357 local msggstaha = tahadevstorm:get('user:messages:'..msg.chat_id_..':'..result.sender_user_id_) or 0  local nupmsgg =  tonumber((msggstaha / msgtaha) * 100)  local  tahah = 1  for k,v in pairs(tahadevstorm:hkeys("user:messages"..msg.chat_id_..":*")) do if tahadevstorm:get("user:messages"..msg.chat_id_":"..v) > tahah then  tahah = tahadevstorm:get("user:messages"..msg.chat_id_":"..v) end end text = '🚸 ❯ اهلا بك في معلوماته ❮ 🚸 \n<code>﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎</code>\n🎮￤ ايديه  <b>{ '..result.sender_user_id_..' }</b>\n📯￤رتبته <b>{ '..t..' }</b>\n📇￤ رسايله <b>{ '..(tahadevstorm:get('user:messages:'..msg.chat_id_..':'..result.sender_user_id_) or 0)..' }</b>\n📮￤ نسبه تفاعله <b>{ '..string.sub(nupmsgg, 1,5)..'% }</b>\n♻￤ تفاعله { '..formsgg(msgss)..' }\n🚀￤ معرفه <b>{</b> '..storm_get_user(result.sender_user_id_)..' <b>}</b>\n🎳￤ اسمه  {<code> '..storm_get_name(result.sender_user_id_)..' </code>}\n<code>﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎</code>\n📮 ❯ المطور @'..sudouser..''
 storm_sendMsg(msg.chat_id_, msg.id_, 1, text, 1, 'html') end getMessage(msg.chat_id_, msg.reply_to_message_id_,id_by_reply) end end end 
 function tdcli_update_callback(data) if (data.ID == "UpdateNewMessage") then   STORM(data.message_,data) elseif data.ID == 'UpdateMessageEdited' then  local function edited_cb(extra,result,success)   if not is_mod(result) and not is_vipgroup(result) and not is_vipgroups(result) and tahadevstorm:get('edit:Lock:'..data.chat_id_) == "lock" then delete_msg(data.chat_id_,{[0] = data.message_id_}) end    STORM(result,data)  end   tdcli_function ({   ID = "GetMessage", chat_id_ = data.chat_id_,   message_id_ = data.message_id_    }, edited_cb, nil)  elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then  tdcli_function ({     ID="GetChats",    offset_order_="9223372036854775807",    offset_chat_id_=0,  limit_=20  }, dl_cb, nil) end end
