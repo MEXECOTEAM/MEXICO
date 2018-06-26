@@ -22,7 +22,7 @@ botname = name,
 bot_id = botid, }
 create(config, "./config.lua")   
 print("\27[735m"..[[ •❮🔵❯• >> تم صنع ملف الكونفك بنجاح << •❮🔵❯•   ]].."\n\27[10m") end create_config_auto()
-file = io.open("STORM.sh", "w")
+file = io.open("MEXICO.sh", "w")
 file:write([[
 token="]]..token..[["
 curl "https://api.telegram.org/bot"$token"/sendmessage" -F
